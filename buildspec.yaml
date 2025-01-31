@@ -22,8 +22,8 @@ phases:
       - echo "Logging in to ECR..."
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "Fetching environment variables from Secrets Manager..."
-      - echo "Branch name: ${BRANCH_NAME}"
-      - echo "MILVUS_HOST: ${MILVUS_HOST}"
+      - echo "Branch name ${BRANCH_NAME}"
+      - echo "MILVUS_HOST ${MILVUS_HOST}"
       # - export ENV_VARS=$(aws secretsmanager get-secret-value --secret-id $BRANCH_NAME --query SecretString --output text)
   build:
     commands:
