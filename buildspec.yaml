@@ -14,6 +14,23 @@ env:
     MILVUS_PASSWORD: "data_lens_secrets:MILVUS_PASSWORD"
     DATABASE_URI: "data_lens_secrets:DATABASE_URI"
     REGION: "data_lens_secrets:REGION"
+    MILVUS_URI: "data_lens_secrets:MILVUS_URI"
+    SECRET_KEY: "data_lens_secrets:SECRET_KEY"
+    ALGORITHM: "data_lens_secrets:ALGORITHM"
+    ACCESS_TOKEN_EXPIRE_MINUTES: "data_lens_secrets:ACCESS_TOKEN_EXPIRE_MINUTES"
+    redis_host: "data_lens_secrets:redis_host"
+    redis_port: "data_lens_secrets:redis_port"
+    redis_password: "data_lens_secrets:redis_password"
+    SQLALCHEMY_DATABASE_URI: "data_lens_secrets:SQLALCHEMY_DATABASE_URI"
+    DB_MODEL: "data_lens_secrets:DB_MODEL"
+    EMBEDDDING_MODEL: "data_lens_secrets:EMBEDDDING_MODEL"
+    DATABASE_USERNAME: "data_lens_secrets:DATABASE_USERNAME"
+    DATABASE_PASSWORD: "data_lens_secrets:DATABASE_PASSWORD"
+    DATABASE_HOSTNAME: "data_lens_secrets:DATABASE_HOSTNAME"
+    DATABASE_PORT: "data_lens_secrets:DATABASE_PORT"
+    DATABASE_NAME: "data_lens_secrets:DATABASE_NAME"
+    
+    
     
     
 
@@ -24,7 +41,32 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "Fetching environment variables from Secrets Manager..."
       - echo "Branch name ${BRANCH_NAME}"
-      - echo "MILVUS_HOST ${MILVUS_HOST}"
+      #- echo "MILVUS_HOST ${MILVUS_HOST}"
+      - echo "MILVUS_HOST=${MILVUS_HOST}" > .env
+      - echo "MILVUS_PORT=${MILVUS_PORT}" >> .env
+      - echo "MILVUS_USER=${MILVUS_USER}" >> .env
+      - echo "MILVUS_PASSWORD=${MILVUS_PASSWORD}" >> .env
+      - echo "DATABASE_URI=${DATABASE_URI}" >> .env
+      - echo "REGION=${REGION}" >> .env
+      - echo "MILVUS_URI=${MILVUS_URI}" >> .env
+      - echo "SECRET_KEY=${SECRET_KEY}" >> .env
+      - echo "ALGORITHM=${ALGORITHM}" >> .env
+      - echo "ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}" >> .env
+      - echo "redis_host=${redis_host}" >> .env
+      - echo "redis_port=${redis_port}" >> .env
+      - echo "redis_password=${redis_password}" >> .env
+      - echo "SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI}" >> .env
+      - echo "DB_MODEL=${DB_MODEL}" >> .env
+      - echo "EMBEDDDING_MODEL=${EMBEDDDING_MODEL}" >> .env
+      - echo "DATABASE_USERNAME=${DATABASE_USERNAME}" >> .env
+      - echo "DATABASE_PASSWORD=${DATABASE_PASSWORD}" >> .env
+      - echo "DATABASE_HOSTNAME=${DATABASE_HOSTNAME}" >> .env
+      - echo "DATABASE_PORT=${DATABASE_PORT}" >> .env
+      - echo "DATABASE_NAME=${DATABASE_NAME}" >> .env
+
+      # Print the contents of the .env file
+      - echo "Contents of .env file:"
+      - cat .env
       
       # - export ENV_VARS=$(aws secretsmanager get-secret-value --secret-id $BRANCH_NAME --query SecretString --output text)
   build:
