@@ -20,10 +20,11 @@ phases:
   build:
     commands:
       - echo "Building Docker image for branch"
-      - echo "$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
-      - docker build -t $IMAGE_REPO_NAME:$APP_NAME .
+      - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - echo "$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
+      - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME
+      - docker build -t $REPO_URL .
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - docker tag $IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$APP_NAME
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$APP_NAME
+      - docker push $REPO_URL
