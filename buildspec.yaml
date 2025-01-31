@@ -22,7 +22,7 @@ phases:
       - echo "Building Docker image for branch"
       - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
-      - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME
+      - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
       #- docker build -t $REPO_URL .
   post_build:
     commands:
