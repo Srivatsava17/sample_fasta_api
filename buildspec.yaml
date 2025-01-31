@@ -20,6 +20,7 @@ phases:
   build:
     commands:
       - echo "Building Docker image for branch"
+      - echo "$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
       - docker build -t $IMAGE_REPO_NAME:$APP_NAME .
   post_build:
     commands:
