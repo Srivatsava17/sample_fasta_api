@@ -6,13 +6,14 @@ env:
     APP_NAME: "sample-fastapi"
     AWS_ACCOUNT_ID: "528503375915"
     AWS_DEFAULT_REGION: "us-west-2"
+    BRANCH_NAME:"main"
   secrets-manager:
     MILVUS_HOST: "data_lens_secrets:MILVUS_HOST"
-    # MILVUS_PORT: "data_lens_secrets:MILVUS_PORT"
-    # MILVUS_USER: "data_lens_secrets:MILVUS_USER"
-    # MILVUS_PASSWORD: "data_lens_secrets:MILVUS_PASSWORD"
-    # DATABASE_URI: "data_lens_secrets:DATABASE_URI"
-    # REGION: "data_lens:REGION"
+    MILVUS_PORT: "data_lens_secrets:MILVUS_PORT"
+    MILVUS_USER: "data_lens_secrets:MILVUS_USER"
+    MILVUS_PASSWORD: "data_lens_secrets:MILVUS_PASSWORD"
+    DATABASE_URI: "data_lens_secrets:DATABASE_URI"
+    REGION: "data_lens:REGION"
     
     
 
@@ -24,6 +25,7 @@ phases:
       - echo "Fetching environment variables from Secrets Manager..."
       - echo "Branch name ${BRANCH_NAME}"
       - echo "MILVUS_HOST ${MILVUS_HOST}"
+      
       # - export ENV_VARS=$(aws secretsmanager get-secret-value --secret-id $BRANCH_NAME --query SecretString --output text)
   build:
     commands:
@@ -36,4 +38,4 @@ phases:
     commands:
       - echo "Pushing Docker image to ECR..."
       - echo $REPO_URL
-      - docker push $REPO_URL
+      #- docker push $REPO_URL
