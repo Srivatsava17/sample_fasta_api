@@ -6,9 +6,9 @@ env:
     APP_NAME: "sample-fastapi"
     AWS_ACCOUNT_ID: "528503375915"
     AWS_DEFAULT_REGION: "us-west-2"
-    # AWS_DEFAULT_REGION: "data_lens_secrets"
-  parameter-store:
     BRANCH_NAME: "main"
+    # AWS_DEFAULT_REGION: "data_lens_secrets"
+    
 
 phases:
   pre_build:
