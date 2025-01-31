@@ -6,7 +6,7 @@ env:
     APP_NAME: "sample-fastapi"
     AWS_ACCOUNT_ID: "528503375915"
     AWS_DEFAULT_REGION: "us-west-2"
-    BRANCH_NAME:"main"
+    BRANCH_NAME: "main"
   secrets-manager:
     MILVUS_HOST: "data_lens_secrets:MILVUS_HOST"
     MILVUS_PORT: "data_lens_secrets:MILVUS_PORT"
