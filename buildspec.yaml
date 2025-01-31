@@ -21,13 +21,9 @@ phases:
     commands:
       - echo "Logging in to ECR..."
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-
       - echo "Fetching environment variables from Secrets Manager..."
       - echo "Branch name: $BRANCH_NAME"
-
-      # Parse the secret (JSON) and extract specific keys
-      - Milvus_host=$(echo $SECRET | jq -r '.MILVUS_HOST')
-      - echo "Milvus Host: $Milvus_host"
+      - echo "Milvus Host: ${MILVUS_HOST}"
 
  build:
     commands:
@@ -38,6 +34,7 @@ phases:
      # - docker build -t $REPO_URL .
   post_build:
     commands:
-      - echo "Connecting to ${Milvus_host}"
+      - echo "Connecting to ${MILVUS_HOST}"
       - echo "Pushing Docker image to ECR..."
       - echo $REPO_URL
+      #- docker push $REPO_URL
