@@ -6,8 +6,9 @@ env:
     APP_NAME: "sample-fastapi"
     AWS_ACCOUNT_ID: "528503375915"
     AWS_DEFAULT_REGION: "us-west-2"
-    parameter-store:
-      BRANCH_NAME: "main"
+    secrets-manager:
+      BRANCH_NAME: "data_lens_secrets:BRANCH_NAME"  
+      ENV_VARS: "data_lens_secrets:ENV_VARS" 
     
     
 
@@ -17,6 +18,8 @@ phases:
       - echo "Logging in to ECR..."
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "Fetching environment variables from Secrets Manager..."
+      - echo "Branch name: $BRANCH_NAME"
+      - echo "Environment variables: $ENV_VARS"
       # - export ENV_VARS=$(aws secretsmanager get-secret-value --secret-id $BRANCH_NAME --query SecretString --output text)
   build:
     commands:
