@@ -8,7 +8,7 @@ env:
     AWS_DEFAULT_REGION: "us-west-2"
     BRANCH_NAME: "main" 
     secrets-manager:
-      SECRET: "data_lens_secrets" 
+      SECRET: data_lens_secrets
     
     
 
