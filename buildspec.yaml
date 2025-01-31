@@ -8,7 +8,13 @@ env:
     AWS_DEFAULT_REGION: "us-west-2"
     BRANCH_NAME: "main"
   secrets-manager:
-    SECRET: "data_lens_secrets"
+    MILVUS_HOST: "data_lens_secrets:MILVUS_HOST"
+    MILVUS_PORT: "data_lens_secrets:MILVUS_PORT"
+    MILVUS_USER: "data_lens_secrets:MILVUS_USER"
+    MILVUS_PASSWORD: "data_lens_secrets:MILVUS_PASSWORD"
+    DATABASE_URI: "data_lens_secrets:DATABASE_URI"
+    REGION: "data_lens:REGION"
+
 
 phases:
   pre_build:
