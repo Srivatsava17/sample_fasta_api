@@ -19,7 +19,7 @@ phases:
       # - export ENV_VARS=$(aws secretsmanager get-secret-value --secret-id $BRANCH_NAME --query SecretString --output text)
   build:
     commands:
-      - echo "Building Docker image for branch: $BRANCH_NAME..."
+      - echo "Building Docker image for branch"
       - docker build -t $IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME .
   post_build:
     commands:
