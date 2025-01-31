@@ -13,7 +13,7 @@ env:
     MILVUS_USER: "data_lens_secrets:MILVUS_USER"
     MILVUS_PASSWORD: "data_lens_secrets:MILVUS_PASSWORD"
     DATABASE_URI: "data_lens_secrets:DATABASE_URI"
-    REGION: "data_lens:REGION"
+    REGION: "data_lens_secrets:REGION"
     
     
 
