@@ -86,10 +86,11 @@ phases:
       - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
       - echo $REPO_URL
       - echo $REPO_URI/$IMAGE_ID
-      #- docker build -t $REPO_URL .
+      -REPO_UR=$REPO_URI/$IMAGE_ID
+      - docker build -t $REPO_UR .
       
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
       - echo $REPO_URL
-      #- docker push $REPO_URL
+      - docker push $REPO_UR
