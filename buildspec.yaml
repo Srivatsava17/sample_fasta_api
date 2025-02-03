@@ -86,7 +86,7 @@ phases:
       - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
       - echo $REPO_URL
       - echo $REPO_URI/$IMAGE_ID
-      -REPO_UR=$REPO_URI/$IMAGE_ID
+      - REPO_UR=$REPO_URI/$IMAGE_ID
       - docker build -t $REPO_UR .
       
   post_build:
