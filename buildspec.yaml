@@ -2,11 +2,10 @@ version: 0.2
 
 env:
   variables:
-    IMAGE_REPO_NAME: "geninsightsrepository"
     APP_NAME: "sample-fastapi"
     AWS_ACCOUNT_ID: "528503375915"
     AWS_DEFAULT_REGION: "us-west-2"
-    BRANCH_NAME: "main"
+
   secrets-manager:
     MILVUS_HOST: "data_lens_secrets:MILVUS_HOST"
     MILVUS_PORT: "data_lens_secrets:MILVUS_PORT"
@@ -68,6 +67,9 @@ phases:
       - echo "Build number, $CODEBUILD_BUILD_NUMBER"
       - LATEST_TAG=latest
       - echo "Latest tag , $LATEST_TAG"
+      - IMAGE_TAG=$BRANCH_NAME-$CODEBUILD_BUILD_NUMBER 
+      - echo $IMAGE_REPO_NAME
+      - echo $IMAGE_REPO_NAME:$BRANCH_NAME_$CODEBUILD_BUILD_NUMBER
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
@@ -77,6 +79,7 @@ phases:
   build:
     commands:
       - echo "Building Docker image for branch"
+      - echo "Image tag:> $IMAGE_TAG"
       - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
       - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
