@@ -65,6 +65,7 @@ phases:
       - echo "DATABASE_NAME=${DATABASE_NAME}" >> .env
       - echo $SAMPLE_ENV
       - echo $SAMPLE_ENV_SIMHA
+      - echo "Build number, $CODEBUILD_BUILD_NUMBER"
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
