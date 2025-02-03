@@ -67,7 +67,7 @@ phases:
       - echo "Build number, $CODEBUILD_BUILD_NUMBER"
       - LATEST_TAG=latest
       - echo "Latest tag , $LATEST_TAG"
-      - IMAGE_TAG=$BRANCH_NAME_$CODEBUILD_BUILD_NUMBER 
+      - IMAGE_TAG=$BRANCH_NAME-$CODEBUILD_BUILD_NUMBER 
       - echo $IMAGE_REPO_NAME
       - IMAGE_ID=$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo $IMAGE_ID
