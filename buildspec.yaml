@@ -66,6 +66,8 @@ phases:
       - echo $SAMPLE_ENV
       - echo $SAMPLE_ENV_SIMHA
       - echo "Build number, $CODEBUILD_BUILD_NUMBER"
+      - LATEST_TAG=latest
+      - echo "Latest tag , $LATEST_TAG"
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
