@@ -67,9 +67,10 @@ phases:
       - echo "Build number, $CODEBUILD_BUILD_NUMBER"
       - LATEST_TAG=latest
       - echo "Latest tag , $LATEST_TAG"
-      - IMAGE_TAG=$BRANCH_NAME-$CODEBUILD_BUILD_NUMBER 
+      - IMAGE_TAG=$BRANCH_NAME_$CODEBUILD_BUILD_NUMBER 
       - echo $IMAGE_REPO_NAME
-      - echo $IMAGE_REPO_NAME:$BRANCH_NAME_$CODEBUILD_BUILD_NUMBER
+      - IMAGE_ID=$IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo $IMAGE_ID
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
@@ -83,6 +84,8 @@ phases:
       - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo "$REPO_URI/$IMAGE_REPO_NAME/$APP_NAME:$BRANCH_NAME"
       - REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
+      - echo $REPO_URL
+      - echo $REPO_URI/$IMAGE_ID
       #- docker build -t $REPO_URL .
       
   post_build:
