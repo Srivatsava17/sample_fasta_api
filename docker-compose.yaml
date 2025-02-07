@@ -1,0 +1,14 @@
+services:
+  sample-fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 
+    container_name: 
+    restart: always
+    ports:
+      - 8017:8000
+    volumes:
+      - ./logs:/home/notebook-user/logs
+    environment:
+      - env=dev
