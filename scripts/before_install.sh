@@ -2,7 +2,7 @@
 echo Region - $AWS_DEFAULT_REGION
 echo Account ID - $AWS_ACCOUNT_ID
 cat /home/ec2-user/.env
-x=whoami
+x=$(whoami)
 echo whoami - $x
 aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 if [ $? -eq 0 ]; then
