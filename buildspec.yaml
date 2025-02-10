@@ -99,7 +99,7 @@ phases:
       - echo "Contents of image_id.txt:"
       - cat image_id.txt
   artifacts:
-  files:
-    - image_id.txt
-    - .env
-  discard-paths: yes
+    files:
+      - image_id.txt
+      - .env
+    discard-paths: yes
