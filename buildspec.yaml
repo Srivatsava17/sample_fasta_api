@@ -74,6 +74,7 @@ phases:
       - latest_image_tag=$BRANCH_NAME-$LATEST_TAG
       - echo $latest_image_tag
       - LATEST_IMAGE_ID=$IMAGE_REPO_NAME:$latest_image_tag
+      - echo "$LATEST_IMAGE_ID"
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
