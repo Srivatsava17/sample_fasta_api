@@ -94,3 +94,12 @@ phases:
       - echo "Pushing Docker image to ECR..."
       - echo $REPO_URL
       - docker push $REPO_UR
+      - echo "Writing image ID to file..."
+      - echo $REPO_UR > image_id.txt
+      - echo "Contents of image_id.txt:"
+      - cat image_id.txt
+  artifacts:
+  files:
+    - image_id.txt
+    - .env
+  discard-paths: yes
