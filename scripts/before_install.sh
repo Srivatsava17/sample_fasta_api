@@ -1,6 +1,6 @@
 #!/bin/bash
-echo Region - $AWS_DEFAULT_REGION
-echo Account ID - $AWS_ACCOUNT_ID
+# echo Region - $AWS_DEFAULT_REGION
+# echo Account ID - $AWS_ACCOUNT_ID
 cat /home/ec2-user/.env
 x=$(whoami)
 echo whoami - $x
@@ -16,6 +16,8 @@ SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --re
 ACCOUNT_ID=$(echo $SECRET_VALUE | jq -r '.ACCOUNT_ID')
 REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
 DEFAULT_REGION=REGION
+echo Region - $AWS_DEFAULT_REGION
+echo Account ID - $AWS_ACCOUNT_ID
 
 aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 if [ $? -eq 0 ]; then
