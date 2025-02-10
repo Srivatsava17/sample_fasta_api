@@ -1,20 +1,21 @@
 #!/bin/bash
 # echo Region - $AWS_DEFAULT_REGION
 # echo Account ID - $AWS_ACCOUNT_ID
-cat /home/ec2-user/.env
-x=$(whoami)
-echo whoami - $x
+# cat /home/ec2-user/.env
+# x=$(whoami)
+# echo whoami - $x
 
 # AWS CLI command to retrieve secrets
 SECRET_NAME="data_lens_secrets"
-REGION="us-west-2"
+AWS_DEFAULT_REGION="us-west-2"
+AWS_ACCOUNT_ID='528503375915'
 
 # Retrieve the secret value
-SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
+# SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
 
-# Parse the JSON response
-AWS_ACCOUNT_ID=$(echo $SECRET_VALUE | jq -r '.ACCOUNT_ID')
-AWS_DEFAULT_REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
+# # Parse the JSON response
+# AWS_ACCOUNT_ID=$(echo $SECRET_VALUE | jq -r '.ACCOUNT_ID')
+# AWS_DEFAULT_REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
 
 echo Region - $AWS_DEFAULT_REGION
 echo Account ID - $AWS_ACCOUNT_ID
