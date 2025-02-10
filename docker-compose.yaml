@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: 
-    container_name: 
+    image: geninsightsrepository:${TAG}
+    container_name: sample_app
     restart: always
     ports:
       - 8017:8000
