@@ -7,8 +7,6 @@ services:
     container_name: sample_app
     restart: always
     ports:
-      - 8017:8000
-    volumes:
-      - ./logs:/home/notebook-user/logs
+      - 8000:8000
     environment:
       - env=dev
