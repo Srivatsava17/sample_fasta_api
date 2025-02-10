@@ -13,9 +13,9 @@ REGION="us-west-2"
 SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
 
 # Parse the JSON response
-ACCOUNT_ID=$(echo $SECRET_VALUE | jq -r '.ACCOUNT_ID')
-REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
-DEFAULT_REGION=REGION
+AWS_ACCOUNT_ID=$(echo $SECRET_VALUE | jq -r '.ACCOUNT_ID')
+AWS_DEFAULT_REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
+
 echo Region - $AWS_DEFAULT_REGION
 echo Account ID - $AWS_ACCOUNT_ID
 
