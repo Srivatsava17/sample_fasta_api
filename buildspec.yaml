@@ -97,8 +97,8 @@ phases:
       - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - LATEST_REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
       - echo $LATEST_REPO_URL
-      - echo $REPO_URI/latest_image_id
-      - LATEST_REPO_UR=$REPO_URI/$latest_image_id
+      - echo $REPO_URI/LATEST_IMAGE_ID
+      - LATEST_REPO_UR=$REPO_URI/$LATEST_IMAGE_ID
       - docker build -t $LATEST_REPO_UR .
       
   post_build:
