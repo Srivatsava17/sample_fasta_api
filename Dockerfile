@@ -1,6 +1,6 @@
 # Dockerfile
 
-FROM python:3.11-alpine
+FROM public.ecr.aws/docker/library/alpine:latest
 
 # Set the working directory in the container
 WORKDIR /app
