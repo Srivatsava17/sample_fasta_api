@@ -98,8 +98,8 @@ phases:
       - echo $REPO_UR > image_id.txt
       - echo "Contents of image_id.txt:"
       - cat image_id.txt
-  artifacts:
-    files:
-      - image_id.txt
-      - .env
-    discard-paths: yes
+artifacts:
+  files:
+    - image_id.txt
+    - .env
+  discard-paths: yes
