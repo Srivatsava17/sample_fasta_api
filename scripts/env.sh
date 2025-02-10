@@ -15,5 +15,4 @@ REGION=$(echo $SECRET_VALUE | jq -r '.REGION')
 echo "export ACCOUNT_ID=$ACCOUNT_ID" > env.sh
 echo "export REGION=$REGION" >> env.sh
 
-# Make env.sh executable
-chmod +x env.sh
+
