@@ -71,6 +71,8 @@ phases:
       - echo $IMAGE_REPO_NAME
       - IMAGE_ID=$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo $IMAGE_ID
+      - latest_image_tag=$BRANCH_NAME-$LATEST_TAG
+      - LATEST_IMAGE_ID=$IMAGE_REPO_NAME:$latest_image_tag
 
       # Print the contents of the .env file
       - echo "Contents of .env file:"
@@ -91,10 +93,10 @@ phases:
 
       #building image with latest_tag
       - echo "Building Docker image for branch with latest tag"
-      - LATEST_REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$LATEST_TAG
+      - REPO_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - LATEST_REPO_URL=$REPO_URI/$IMAGE_REPO_NAME:$BRANCH_NAME
       - echo $LATEST_REPO_URL
-      - latest_image_id=$BRANCH_NAME-$LATEST_TAG
-      - echo $latest_image_id
+      - echo $REPO_URI/latest_image_id
       - LATEST_REPO_UR=$REPO_URI/$latest_image_id
       - docker build -t $LATEST_REPO_UR .
       
